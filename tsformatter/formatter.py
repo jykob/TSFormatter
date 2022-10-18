@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from typing import Iterable, Literal
 
-
 hr = "[HR]"
 
 
@@ -35,7 +34,7 @@ def size(font_size: int | str, string: str) -> str:
     return f"[SIZE={font_size}]{string}[/SIZE]"
 
 
-def color(color_code: str, string: str) -> str:
+def color(color: str, string: str) -> str:
     """
     Formats the given text to have color.
 
@@ -44,7 +43,7 @@ def color(color_code: str, string: str) -> str:
         - Hex Triplet (e.g. "#f00", "#ff0000")
     """
 
-    return f"[COLOR={color_code}]{string}[/COLOR]"
+    return f"[COLOR={color}]{string}[/COLOR]"
 
 
 def bold(string: str) -> str:
@@ -82,7 +81,7 @@ def right(string: str) -> str:
     return f"[RIGHT]{string}[/RIGHT]"
 
 
-def list_(rows: Iterable[str], style: Literal["1", "a", "i", "A", "I"] | None = None) -> str:
+def list_(rows: Iterable[str], *, style: Literal["1", "a", "i", "A", "I"] | None = None) -> str:
     """Formats a list. Will default to bullet style list if none provided.
 
     Other available styles:
@@ -97,14 +96,17 @@ def list_(rows: Iterable[str], style: Literal["1", "a", "i", "A", "I"] | None = 
     return f"""{'[LIST]' if style is None else f'[LIST={style}]'}\n{items}\n[/LIST]"""
 
 
-def table(rows: Iterable[str]) -> str:
-    table_rows = "\n".join(map(str, rows))
+def table(*rows: str) -> str:
+    """Takes in any number of formatted rows and wraps them in a table"""
+    table_rows = "\n".join(rows)
     return f"[TABLE]\n{table_rows}\n[/TABLE]"
 
 
 def table_header_row(columns: Iterable[str]) -> str:
+    """Formats a table header row"""
     return f"""[TR]{"".join(f"[TH]{column}[/TH]" for column in columns)}[/TR]"""
 
 
 def table_row(columns: Iterable[str]) -> str:
+    """Formats a table row"""
     return f"""[TR]{"".join(f"[TD]{column}[/TD]" for column in columns)}[/TR]"""
