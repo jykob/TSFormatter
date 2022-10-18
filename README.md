@@ -76,11 +76,13 @@ formatter.link("https://www.teamspeak.com/", "TeamSpeak Website")
 
 #### List styles that work:
 
-- "1"
-- "a"
-- "i"
-- "A"
-- "I"
+| Style | Renders                                          |
+| ----- | ------------------------------------------------ |
+| "1"   | ![numberic](.github/img/list_numeric.png)        |
+| "a"   | ![alpha lower](.github/img/list_alpha_lower.png) |
+| "i"   | ![numberic](.github/img/list_roman_lower.png)    |
+| "A"   | ![numberic](.github/img/list_alpha_upper.png)    |
+| "I"   | ![numberic](.github/img/list_roman_upper.png)    |
 
 ### Placement
 
@@ -144,6 +146,6 @@ formatter.link("https://www.teamspeak.com/", "TeamSpeak Website")
 '[TABLE]\n[TR][TH]Place[/TH][TH]City[/TH][TH]Date[/TH][/TR]\n[TR][TD]Statue of Liberty[/TD][TD]New York City[/TD][TD]October 28, 1886[/TD][/TR]\n[TR][TD]Eiffel Tower[/TD][TD]Paris[/TD][TD]31 March, 1889[/TD][/TR]\n[TR][TD]Big Ben[/TD][TD]London[/TD][TD]31 May, 1859[/TD][/TR]\n[/TABLE]'
 ```
 
-#### Results when rendered:
+#### Results when rendered by TeamSpeak client:
 
 ![table example](.github/img/table.png)
