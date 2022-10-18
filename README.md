@@ -76,13 +76,9 @@ formatter.link("https://www.teamspeak.com/", "TeamSpeak Website")
 
 #### List styles that work:
 
-| Style | Renders                                          |
-| ----- | ------------------------------------------------ |
-| "1"   | ![numberic](.github/img/list_numeric.png)        |
-| "a"   | ![alpha lower](.github/img/list_alpha_lower.png) |
-| "i"   | ![numberic](.github/img/list_roman_lower.png)    |
-| "A"   | ![numberic](.github/img/list_alpha_upper.png)    |
-| "I"   | ![numberic](.github/img/list_roman_upper.png)    |
+| Style   |                    "1"                    |                       "a"                        |                      "i"                      |                      "A"                      |                      "I"                      |
+| ------- | :---------------------------------------: | :----------------------------------------------: | :-------------------------------------------: | :-------------------------------------------: | :-------------------------------------------: |
+| Renders | ![numberic](.github/img/list_numeric.png) | ![alpha lower](.github/img/list_alpha_lower.png) | ![numberic](.github/img/list_roman_lower.png) | ![numberic](.github/img/list_alpha_upper.png) | ![numberic](.github/img/list_roman_upper.png) |
 
 ### Placement
 
