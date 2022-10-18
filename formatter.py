@@ -82,7 +82,7 @@ def right(string: str) -> str:
     return f"[RIGHT]{string}[/RIGHT]"
 
 
-def list_(members: Iterable[str], style: Literal["1", "a", "i", "A", "I"] | None = None) -> str:
+def list_(rows: Iterable[str], style: Literal["1", "a", "i", "A", "I"] | None = None) -> str:
     """Formats a list. Will default to bullet style list if none provided.
 
     Other available styles:
@@ -93,7 +93,7 @@ def list_(members: Iterable[str], style: Literal["1", "a", "i", "A", "I"] | None
         - Upper Roman numeral list: 'I'
     """
 
-    items = "\n".join(f"[*]{item}" for item in members)
+    items = "\n".join(f"[*]{row}" for row in rows)
     return f"""{'[LIST]' if style is None else f'[LIST={style}]'}\n{items}\n[/LIST]"""
 
 
@@ -102,9 +102,9 @@ def table(rows: Iterable[str]) -> str:
     return f"[TABLE]\n{table_rows}\n[/TABLE]"
 
 
-def table_header_row(members: Iterable[str]) -> str:
-    return f"""[TR]{"".join(f"[TH]{member}[/TH]" for member in members)}[/TR]"""
+def table_header_row(columns: Iterable[str]) -> str:
+    return f"""[TR]{"".join(f"[TH]{column}[/TH]" for column in columns)}[/TR]"""
 
 
-def table_row(members: Iterable[str]) -> str:
-    return f"""[TR]{"".join(f"[TD]{member}[/TD]" for member in members)}[/TR]"""
+def table_row(columns: Iterable[str]) -> str:
+    return f"""[TR]{"".join(f"[TD]{column}[/TD]" for column in columns)}[/TR]"""
