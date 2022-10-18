@@ -2,23 +2,19 @@
 
 Helper package to format TeamSpeak BBCode
 
----
-
 ## 📦 Installation
 
 ```shell
 pip install tsformatter
 ```
 
-## Usage
+## ✏️ Usage
 
 importing the formatter
 
 ```python
 from tsformatter import formatter
 ```
-
----
 
 ### Colors
 
@@ -39,8 +35,6 @@ from tsformatter import formatter
 '[COLOR=#AFEEEE]This text is turquoise[/COLOR]'
 ```
 
----
-
 ### Horizontal line
 
 ```python
@@ -48,16 +42,12 @@ from tsformatter import formatter
 '[HR]'
 ```
 
----
-
 ### Images
 
 ```python
 >>> formatter.img("https://i.imgur.com/ml09ccU.png")
 '[IMG]https://i.imgur.com/ml09ccU.png[/IMG]'
 ```
-
----
 
 ### Links
 
@@ -70,8 +60,6 @@ from tsformatter import formatter
 formatter.link("https://www.teamspeak.com/", "TeamSpeak Website")
 '[URL=https://www.teamspeak.com/]TeamSpeak Website[/URL]'
 ```
-
----
 
 ### Lists
 
@@ -94,8 +82,6 @@ formatter.link("https://www.teamspeak.com/", "TeamSpeak Website")
 - "A"
 - "I"
 
----
-
 ### Placement
 
 ```python
@@ -108,8 +94,6 @@ formatter.link("https://www.teamspeak.com/", "TeamSpeak Website")
 >>> formatter.center("Center of the space")
 '[CENTER]Center of the space[/CENTER]'
 ```
-
----
 
 ### Size
 
@@ -126,8 +110,6 @@ formatter.link("https://www.teamspeak.com/", "TeamSpeak Website")
 '[SIZE=+2]I am 2 units bigger than the rest[/SIZE]'
 ```
 
----
-
 ### Styles
 
 ```python
@@ -143,8 +125,6 @@ formatter.link("https://www.teamspeak.com/", "TeamSpeak Website")
 >>> formatter.strike("Example text")
 '[S]Example text[/S]'
 ```
-
----
 
 ### Tables
 
@@ -166,6 +146,4 @@ formatter.link("https://www.teamspeak.com/", "TeamSpeak Website")
 
 #### Results when rendered:
 
-![table example](.github\img\table.png)
-
----
+![table example](.github/img/table.png)
