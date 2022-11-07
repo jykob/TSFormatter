@@ -1,7 +1,6 @@
-
 [project]
 name = "tsformatter"
-version = "0.1.0"
+version = "0.2.0"
 authors = [{ name = "0x4aK" }]
 description = "Helper package to format TeamSpeak BBCode"
 readme = "README.md"
@@ -23,15 +22,10 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
-packages = ["tsformatter"]
-
-[tool.setuptools.package-data]
-tsformatter = ["py.typed"]
+py-modules = ["tsformatter"]
 
 [tool.pytest.ini_options]
 addopts = "--cov"
-testpaths = ["tests"]
-
 
 [tool.mypy]
 check_untyped_defs = true

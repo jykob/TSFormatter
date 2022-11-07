@@ -3,17 +3,17 @@ from __future__ import annotations
 from typing import Callable
 
 import pytest
-from tsformatter import formatter
+import tsformatter
 
 simples = (
-    pytest.param(formatter.img, "IMG", "https://i.imgur.com/ml09ccU.png", id="test_img"),
-    pytest.param(formatter.bold, "B", "Test string", id="test_bold"),
-    pytest.param(formatter.italic, "I", "Test string", id="test_italic"),
-    pytest.param(formatter.underline, "U", "Test string", id="test_underline"),
-    pytest.param(formatter.strike, "S", "Test string", id="test_strike"),
-    pytest.param(formatter.center, "CENTER", "Test string", id="test_center"),
-    pytest.param(formatter.left, "LEFT", "Test string", id="test_left"),
-    pytest.param(formatter.right, "RIGHT", "Test string", id="test_right"),
+    pytest.param(tsformatter.img, "IMG", "https://i.imgur.com/ml09ccU.png", id="test_img"),
+    pytest.param(tsformatter.bold, "B", "Test string", id="test_bold"),
+    pytest.param(tsformatter.italic, "I", "Test string", id="test_italic"),
+    pytest.param(tsformatter.underline, "U", "Test string", id="test_underline"),
+    pytest.param(tsformatter.strike, "S", "Test string", id="test_strike"),
+    pytest.param(tsformatter.center, "CENTER", "Test string", id="test_center"),
+    pytest.param(tsformatter.left, "LEFT", "Test string", id="test_left"),
+    pytest.param(tsformatter.right, "RIGHT", "Test string", id="test_right"),
 )
 
 
@@ -39,7 +39,7 @@ def test_simples(func: Callable[[str], str], tag: str, string: str):
     ),
 )
 def test_link(args: tuple[str, str | None], expected: str):
-    assert formatter.link(*args) == expected
+    assert tsformatter.link(*args) == expected
 
 
 @pytest.mark.parametrize(
@@ -51,7 +51,7 @@ def test_link(args: tuple[str, str | None], expected: str):
     ),
 )
 def test_size(args: tuple[int | str, str], expected: str):
-    assert formatter.size(*args) == expected
+    assert tsformatter.size(*args) == expected
 
 
 @pytest.mark.parametrize(
@@ -63,7 +63,7 @@ def test_size(args: tuple[int | str, str], expected: str):
     ),
 )
 def test_color(args: tuple[str, str], expected: str):
-    assert formatter.color(*args) == expected
+    assert tsformatter.color(*args) == expected
 
 
 @pytest.mark.parametrize(
@@ -84,24 +84,24 @@ def test_color(args: tuple[str, str], expected: str):
     ),
 )
 def test_list(list_items: list[str], kwargs: dict[str, str | None], expected: str):
-    assert formatter.list_(list_items, **kwargs) == expected
+    assert tsformatter.list_(list_items, **kwargs) == expected
 
 
 def test_table_header_row():
-    row = formatter.table_header_row(map(str, range(3)))
+    row = tsformatter.table_header_row(map(str, range(3)))
     assert row == "[TR][TH]0[/TH][TH]1[/TH][TH]2[/TH][/TR]"
 
 
 def test_table_row():
-    row = formatter.table_row(map(str, range(3)))
+    row = tsformatter.table_row(map(str, range(3)))
     assert row == "[TR][TD]0[/TD][TD]1[/TD][TD]2[/TD][/TR]"
 
 
 def test_table():
-    formatted_table = formatter.table(
-        formatter.table_header_row(map(str, range(3))),
-        formatter.table_row(map(str, range(3))),
-        formatter.table_row(map(str, range(3))),
+    formatted_table = tsformatter.table(
+        tsformatter.table_header_row(map(str, range(3))),
+        tsformatter.table_row(map(str, range(3))),
+        tsformatter.table_row(map(str, range(3))),
     )
 
     assert formatted_table == (
