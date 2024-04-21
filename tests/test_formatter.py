@@ -1,8 +1,9 @@
 from __future__ import annotations
 
-from typing import Callable
+from typing import Callable, Literal
 
 import pytest
+
 import tsformatter
 
 simples = (
@@ -46,8 +47,12 @@ def test_link(args: tuple[str, str | None], expected: str):
     ("args", "expected"),
     (
         pytest.param((24, "Test string"), "[SIZE=24]Test string[/SIZE]", id="test_absolute"),
-        pytest.param(("-4", "Test string"), "[SIZE=-4]Test string[/SIZE]", id="test_relative_negative"),
-        pytest.param(("+2", "Test string"), "[SIZE=+2]Test string[/SIZE]", id="test_relative_positive"),
+        pytest.param(
+            ("-4", "Test string"), "[SIZE=-4]Test string[/SIZE]", id="test_relative_negative"
+        ),
+        pytest.param(
+            ("+2", "Test string"), "[SIZE=+2]Test string[/SIZE]", id="test_relative_positive"
+        ),
     ),
 )
 def test_size(args: tuple[int | str, str], expected: str):
@@ -57,9 +62,19 @@ def test_size(args: tuple[int | str, str], expected: str):
 @pytest.mark.parametrize(
     ("args", "expected"),
     (
-        pytest.param(("#fff", "Test string"), "[COLOR=#fff]Test string[/COLOR]", id="test_hex_triplet_3"),
-        pytest.param(("#686868", "Test string"), "[COLOR=#686868]Test string[/COLOR]", id="test_hex_triplet_6"),
-        pytest.param(("Chartreuse", "Test string"), "[COLOR=Chartreuse]Test string[/COLOR]", id="test_html_name"),
+        pytest.param(
+            ("#fff", "Test string"), "[COLOR=#fff]Test string[/COLOR]", id="test_hex_triplet_3"
+        ),
+        pytest.param(
+            ("#686868", "Test string"),
+            "[COLOR=#686868]Test string[/COLOR]",
+            id="test_hex_triplet_6",
+        ),
+        pytest.param(
+            ("Chartreuse", "Test string"),
+            "[COLOR=Chartreuse]Test string[/COLOR]",
+            id="test_html_name",
+        ),
     ),
 )
 def test_color(args: tuple[str, str], expected: str):
@@ -83,7 +98,11 @@ def test_color(args: tuple[str, str], expected: str):
         ),
     ),
 )
-def test_list(list_items: list[str], kwargs: dict[str, str | None], expected: str):
+def test_list(
+    list_items: list[str],
+    kwargs: dict[str, Literal["1", "a", "i", "A", "I"] | None],
+    expected: str,
+):
     assert tsformatter.list_(list_items, **kwargs) == expected
 
 

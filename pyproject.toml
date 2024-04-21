@@ -1,6 +1,6 @@
 [project]
 name = "tsformatter"
-version = "0.2.0"
+version = "0.2.1"
 authors = [{ name = "0x4aK" }]
 description = "Helper package to format TeamSpeak BBCode"
 readme = "README.md"
@@ -15,17 +15,17 @@ classifiers = [
 "Homepage" = "https://github.com/0x4aK/tsformatter"
 
 [project.optional-dependencies]
-tests = ["pytest", "pytest-cov"]
+tests = ["mypy >= 1.9.0", "pytest==8.1.1", "pytest-cov==5.0.0"]
 
 [build-system]
-requires = ["setuptools>=61.0"]
+requires = ["setuptools>=69.5.1"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
-py-modules = ["tsformatter"]
+packages = ["tsformatter"]
 
-[tool.pytest.ini_options]
-addopts = "--cov"
+[tool.setuptools.package-data]
+tsformatter = ["py.typed"]
 
 [tool.mypy]
 check_untyped_defs = true
@@ -36,3 +36,30 @@ disallow_incomplete_defs = true
 ignore_missing_imports = true
 no_implicit_optional = true
 show_error_codes = true
+
+[tool.tox]
+legacy_tox_ini = """
+minversion = 3.8.0
+envlist = py38, py39, py310, py311, py312, mypy
+isolated_build = true
+
+[gh-actions]
+python =
+    3.8: py38
+    3.9: py39
+    3.10: py310, mypy
+    3.11: py311
+    3.12: py312
+
+[testenv]
+setenv =
+    PYTHONPATH = {toxinidir}
+extras = tests
+commands = pytest --basetemp={envtmpdir} --cov
+
+[testenv:mypy]
+basepython = python3.10
+deps =
+    mypy
+commands = mypy tsformatter
+"""
