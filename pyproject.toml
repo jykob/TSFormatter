@@ -39,7 +39,7 @@ show_error_codes = true
 
 [tool.tox]
 legacy_tox_ini = """
-minversion = 3.8.0
+minversion = 3.4.0
 envlist = py38, py39, py310, py311, py312, mypy
 isolated_build = true
 
