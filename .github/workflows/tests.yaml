@@ -17,7 +17,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-          cache: "pip" # caching pip dependencies
+          cache: "pip"
 
       - name: Install dependencies
         run: |
@@ -25,7 +25,8 @@ jobs:
           pip install .[tests]
 
       - name: Test with pytest
-        run: pytest tests
+        run: python -m pytest tests
+        timeout-minutes: 1
 
   typecheck:
     runs-on: "ubuntu-latest"
@@ -36,7 +37,8 @@ jobs:
       - name: Check with Pyright
         uses: jakebailey/pyright-action@v2
         with:
-          working-directory: "tsformatter"
+          warnings: true
+          extra-args: "tsformatter"
 
   lint:
     runs-on: "ubuntu-latest"
