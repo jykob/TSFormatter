@@ -93,7 +93,7 @@ def list_(rows: Iterable[str], *, style: Literal["1", "a", "i", "A", "I"] | None
     """
 
     items = "\n".join(f"[*]{row}" for row in rows)
-    return f"""{'[LIST]' if style is None else f'[LIST={style}]'}\n{items}\n[/LIST]"""
+    return f"""{"[LIST]" if style is None else f"[LIST={style}]"}\n{items}\n[/LIST]"""
 
 
 def table(*rows: str) -> str:
