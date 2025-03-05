@@ -1,6 +1,6 @@
 [project]
 name = "tsformatter"
-version = "0.2.2"
+version = "0.2.3"
 authors = [{ name = "jykob" }]
 description = "Helper package to format TeamSpeak BBCode"
 readme = "README.md"
