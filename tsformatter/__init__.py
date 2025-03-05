@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-from typing import Iterable, Literal
+from typing import Final, Iterable, Literal
 
-hr = "[HR]"
+hr: Final = "[HR]"
 
 
 def link(url: str, link_text: str | None = None) -> str:
